@@ -43,7 +43,7 @@ function kopyala(arr) {
   let copyArr = [...arr];
   return copyArr;
 }
-console.log(("1.Gorev", kopyala(orijinalTatlar)));
+console.log(("Gorev 1:", kopyala(orijinalTatlar)));
 
 /* Görev 2:
 Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları kabul etmelidir:
@@ -63,7 +63,7 @@ function dizi25Cesitmi(arr) {
   }
 }
 
-console.log(dizi25Cesitmi(orijinalTatlar));
+console.log("Gorev 2: ", dizi25Cesitmi(orijinalTatlar));
 
 /* Görev 3:
 Pastane sahibi size yeni bir lezzet fikriyle geldi: Kakule! Bunun da çok tutacağından çok emin. Bu lezzeti eklemek için diziyi değiştirmeniz gerekir.
@@ -84,7 +84,7 @@ function cesitEkle(tatlar, yenitat) {
   return tatlar;
 }
 
-console.log(cesitEkle(orijinalTatlar, "Kakule"));
+console.log("Gorev 3: Kakule eklendi", cesitEkle(orijinalTatlar, "Kakule"));
 
 /* Cörev 4:
 
@@ -98,12 +98,12 @@ Aşağıdakileri yapmak için sonCesitiKaldir işlevini kullanın:
    Örneğin: sonCesitiKaldir(orijinalTatlar) çalıştırıldığında ["Kakule", "Muz",..."Çilek"] döndürülür.
 */
 
-function sonCesitiKaldir(arr) {
-  arr.pop();
-  return arr;
+function sonCesitiKaldir(tatllar) {
+  tatllar.pop();
+  return tatllar;
 }
 
-console.log(sonCesitiKaldir(orijinalTatlar));
+console.log("Gorev 4 : Vanilya kaldirildi. ", sonCesitiKaldir(orijinalTatlar));
 
 /* Görev 5:
 Dizideki belirli bir indeksteki çeşniyi döndüren bir işlev yazın.
@@ -117,11 +117,11 @@ Aşağıdakileri yapmak için aşağıdaki indekstekiCesitiGetir işlevini kulla
 */
 
 function indekstekiCesitiGetir(tatlar, index) {
-  sonuc = tatlar[index];
+  let sonuc = tatlar[index];
   return sonuc;
 }
 
-console.log(indekstekiCesitiGetir(orijinalTatlar, 2));
+console.log("Gorev 5 : Istenen cesiti getir: ", indekstekiCesitiGetir(orijinalTatlar, 2));
 
 /* Görev 6:
 
@@ -139,11 +139,14 @@ Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
 */
 
 function ismeGoreCesitCikar(tatlar, lezzetAdi) {
-  tatlar.splice(lezzetAdi, 1, 0);
-  return tatlar;
+  for (let i = 0 ; i < tatlar.length ; i++ ) {
+    if (tatlar[i] == lezzetAdi) {
+      tatlar.splice(i,1)
+    }
+  } return tatlar
 }
 
-console.log(ismeGoreCesitCikar(orijinalTatlar, "Tarçın"));
+console.log("Gorev 6 : Tarcin listeden cikarildi : ", ismeGoreCesitCikar(orijinalTatlar, "Tarçın"));
 
 /* Görev 7:
 
@@ -166,11 +169,18 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
 */
 
 function ismeGoreFiltrele(tatlar, istenenTat) {
-  istenenTat = [tatlar.includes(istenenTat)];
-  return String(istenenTat);
+  const istenenTatList = [];
+
+  for (let i = 0 ; i < tatlar.length ; i++) {
+    const elimdekiTat = tatlar[i];
+
+    if (elimdekiTat.includes(istenenTat)) {
+      istenenTatList.push(elimdekiTat)
+    }
+  } return istenenTatList
 }
 
-console.log(ismeGoreFiltrele(orijinalTatlar, "Çikolata"));
+console.log("Cikolata iceren tatlar: " + ismeGoreFiltrele(orijinalTatlar, "Çikolata"));
 
 /* ALIŞTIRMA */
 
